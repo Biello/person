@@ -1,0 +1,8 @@
+server:
+  port: 8080
+hello: Hello
+world: World
+content: "said: ${hello} ${world}! "
+person:
+  name: admin
+  age: 18

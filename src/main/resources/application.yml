@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: coco
+    password: 123456
+  jpa:
+    hibernate:
+      # create： 每次启动先删除表，再新建
+      # update： 如果没有就新建表，启动时不删表
+      # create-drop: 应用停下来的删除表
+      # none： 什么都不做
+      # validate：验证@Entity类和表结构是否一致，不一致会报错
+      ddl-auto: update
+    show-sql: true
