@@ -3,6 +3,7 @@ package ind.kobe.person.bean;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 /**
  * @Author: Bielu
@@ -20,6 +21,7 @@ public class Person {
 
     private String name;
 
+    @Min(value = 18, message = "不允许添加未成年人")
     private int age;
 
     public Person() {

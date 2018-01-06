@@ -1,4 +1,6 @@
-package ind.kobe.person.bean;
+package ind.kobe.person.exception;
+
+import ind.kobe.person.enums.ResultCodeEnum;
 
 /**
  * 自定义统一异常
@@ -9,6 +11,11 @@ package ind.kobe.person.bean;
 public class PersonException extends RuntimeException {
 
     private int code;
+
+    public PersonException(ResultCodeEnum resultCodeEnum) {
+        super(resultCodeEnum.getMsg());
+        this.code = resultCodeEnum.getCode();
+    }
 
     public PersonException(int code, String msg) {
         super(msg);

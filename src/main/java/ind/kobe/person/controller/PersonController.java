@@ -3,9 +3,14 @@ package ind.kobe.person.controller;
 import ind.kobe.person.bean.Person;
 import ind.kobe.person.repo.PersonRepository;
 import ind.kobe.person.service.PersonService;
+import ind.kobe.person.utils.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -14,6 +19,8 @@ import java.util.List;
  */
 @RestController
 public class PersonController {
+
+    private final static Logger logger = LoggerFactory.getLogger(PersonController.class);
 
     @Autowired
     private PersonRepository personRepository;
@@ -30,6 +37,19 @@ public class PersonController {
     public Person personGet(@PathVariable int id) {
         return personRepository.findOne(id);
     }
+
+    @PostMapping(value = "/person")
+    public Object personAdd(@Valid Person person, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            String msg = bindingResult.getFieldError().getDefaultMessage();
+            logger.info(msg);
+            return ResultUtil.error(1, msg);
+        }
+        person.setName(person.getName());
+        person.setAge(person.getAge());
+        return ResultUtil.success(personRepository.save(person));
+    }
+
 
     @PutMapping(value = "/person/{id}")
     public Person personUpdate(@PathVariable("id") int id,
@@ -56,4 +76,10 @@ public class PersonController {
     public void insertTwoPerson() {
         personService.insertTwoPerson();
     }
+
+    @GetMapping(value = "person/getAge/{id}")
+    public int getAgeById(@PathVariable("id") int id) throws Exception{
+        return personService.getAge(id);
+    }
+
 }
