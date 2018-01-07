@@ -34,7 +34,7 @@ public class PersonService {
 
     }
 
-    public int getAge(int id) throws Exception{
+    public int getAge(int id) throws Exception {
         Person person = personRepository.findOne(id);
         int age = person.getAge();
         if(age < 6) {
@@ -44,5 +44,11 @@ public class PersonService {
         }else {
             return age;
         }
+    }
+    
+    public Person findOne(int id){
+        Person person = personRepository.findOne(id);
+        return person;
+        
     }
 }
