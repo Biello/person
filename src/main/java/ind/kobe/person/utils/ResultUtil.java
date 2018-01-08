@@ -8,17 +8,17 @@ import ind.kobe.person.bean.Result;
  */
 public class ResultUtil {
 
-    public static Result success(Object obj) {
-        Result result = new Result(0, "success", obj);
+    public static Result<Object> success(Object obj) {
+        Result<Object> result = new Result<Object>(0, "success", obj);
         return result;
     }
 
-    public static Result success() {
+    public static Result<Object> success() {
         return success(null);
     }
 
-    public static Result error(int code, String msg) {
-        Result result = new Result(code, msg);
+    public static Result<?> error(int code, String msg) {
+        Result<?> result = new Result<Object>(code, msg);
         return result;
     }
 

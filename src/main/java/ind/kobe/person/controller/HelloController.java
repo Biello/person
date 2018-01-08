@@ -20,6 +20,7 @@ public class HelloController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String say() {
+    	logger.info(content);
         return content + personProperties.getName();
     }
 
