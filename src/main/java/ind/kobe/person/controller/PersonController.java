@@ -38,6 +38,8 @@ public class PersonController {
         return personRepository.findOne(id);
     }
 
+
+    // @Valid表单验证
     @PostMapping(value = "/person")
     public Object personAdd(@Valid Person person, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
