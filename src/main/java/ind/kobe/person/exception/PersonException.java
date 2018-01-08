@@ -9,8 +9,13 @@ import ind.kobe.person.enums.ResultCodeEnum;
  */
 // 注意继承RuntimeException， Spring只对RuntimeException进行事务回滚
 public class PersonException extends RuntimeException {
-
-    private int code;
+	
+	/**
+	 * generated version ID
+	 */
+	private static final long serialVersionUID = 5721861430106678585L;
+	
+	private int code;
 
     public PersonException(ResultCodeEnum resultCodeEnum) {
         super(resultCodeEnum.getMsg());

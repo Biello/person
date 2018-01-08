@@ -1,13 +1,14 @@
 package ind.kobe.person.handle;
 
-import ind.kobe.person.bean.Result;
-import ind.kobe.person.exception.PersonException;
-import ind.kobe.person.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import ind.kobe.person.bean.Result;
+import ind.kobe.person.exception.PersonException;
+import ind.kobe.person.utils.ResultUtil;
 
 /**
  * @Author: Bielu
@@ -19,8 +20,8 @@ public class ExceptionHandle {
     private final static Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public Result handle(Exception e) {
-        if(e instanceof PersonException) {
+    public Result<?> handle(Exception e) {
+    	if(e instanceof PersonException) {
             PersonException personException = (PersonException) e;
             return ResultUtil.error(personException.getCode(), personException.getMessage());
         }else {

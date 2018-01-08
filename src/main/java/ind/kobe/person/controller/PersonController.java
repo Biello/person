@@ -70,7 +70,7 @@ public class PersonController {
     }
 
     @GetMapping(value = "/person/age/{age}")
-    public List personGetByAge(@PathVariable("age") int age) {
+    public List<Person> personGetByAge(@PathVariable("age") int age) {
         return personRepository.findByAge(age);
     }
 
