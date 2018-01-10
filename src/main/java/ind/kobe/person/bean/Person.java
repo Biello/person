@@ -27,6 +27,10 @@ public class Person {
     public Person() {
     }
 
+    public String toString() {
+    	return "{id: " + this.id + ",name: " + this.name + ",age: " + this.age + "}";
+    }
+    
     public int getId() {
         return id;
     }
