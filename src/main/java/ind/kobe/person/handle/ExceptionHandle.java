@@ -11,6 +11,7 @@ import ind.kobe.person.exception.PersonException;
 import ind.kobe.person.utils.ResultUtil;
 
 /**
+ * 注解@ControllerAdvice 使一个Contoller成为全局的异常处理类，类中用@ExceptionHandler方法注解的方法可以处理所有Controller发生的异常。
  * @Author: Bielu
  * @Date: Created on 0:07 2018/1/7
  */
