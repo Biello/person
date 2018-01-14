@@ -22,7 +22,7 @@ public class PersonServiceTest {
     private PersonService personService;
 
     @Test
-    public void findOne() throws Exception {
+    public void testFindOne() throws Exception {
         Person person = personService.findOne(1);
         assertEquals(36, person.getAge());
     }

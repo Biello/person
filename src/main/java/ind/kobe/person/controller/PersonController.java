@@ -52,6 +52,20 @@ public class PersonController {
         return ResultUtil.success(personRepository.save(person));
     }
 
+    // 接受json, 注意这里的@Valid无效，因为它只对form表单进行验证
+    @PostMapping(value = "/personJson")
+    @ResponseBody
+    public Object personAddJson(@RequestBody @Valid Person person, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            String msg = bindingResult.getFieldError().getDefaultMessage();
+            logger.info(msg);
+            return ResultUtil.error(1, msg);
+        }
+        person.setName(person.getName());
+        person.setAge(person.getAge());
+        return ResultUtil.success(personRepository.save(person));
+    }
+
 
     @PutMapping(value = "/person/{id}")
     public Person personUpdate(@PathVariable("id") int id,
