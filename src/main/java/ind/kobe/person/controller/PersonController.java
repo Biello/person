@@ -52,7 +52,7 @@ public class PersonController {
         return ResultUtil.success(personRepository.save(person));
     }
 
-    // 接受json, 注意这里的@Valid无效同样有效
+    // 接受json, 注意这里的@Valid同样有效
     @PostMapping(value = "/personJson")
     @ResponseBody
     public Object personAddJson(@RequestBody @Valid Person person, BindingResult bindingResult) {
